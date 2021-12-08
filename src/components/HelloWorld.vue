@@ -1,35 +1,36 @@
 <template>
-  <h1>{{ msg }}</h1>
-  <h2>Filter LearnVue Articles</h2>
-  <input type="text" placeholder="Filter Search" v-model="query" />
-  <button @click="reset">clear</button>
-
-  <search-results :query='query'/>
+  <div class="hello">
+    <h1>{{ msg }}</h1>
+    </div>
 </template>
 
-<script>
-import { ref } from "vue";
-import SearchResults from './SearchResults.vue'
+<script lang="ts">
+import { Options, Vue } from 'vue-class-component';
 
-export default {
-  name: "HelloWorld",
-  components: {
-    SearchResults
-  },
+@Options({
   props: {
-    msg: String,
-  },
-  setup() {
-    const query = ref("");
-
-    const reset = (e) => {
-      query.value = ''
-    }
-
-    return {
-      query,
-      reset
-    };
-  },
-};
+    msg: String
+  }
+})
+export default class HelloWorld extends Vue {
+  msg!: string
+}
 </script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped lang="scss">
+h3 {
+  margin: 40px 0 0;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+li {
+  display: inline-block;
+  margin: 0 10px;
+}
+a {
+  color: #42b983;
+}
+</style>
